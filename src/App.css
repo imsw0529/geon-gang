@@ -16,6 +16,11 @@ header h1 {
   text-align: left;
 }
 
+.people-icon {
+  width: 5vmin;
+  height: 5vmin;
+}
+
 .login {
   width: 20%;
   padding: 0;
@@ -37,10 +42,11 @@ header h1 {
 }
 
 .login-sub {
-  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
-.login-sub span {
+.login-sub p {
   margin: 0 auto;
   font-size: 0.7em;
 }

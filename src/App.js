@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
+import User from './components/User';
 
 function Title() {
   return (
     <header>
       <h1>개강총회 건강증진 대회</h1>
-      <Login />
+      <User />
     </header>
   );
 };

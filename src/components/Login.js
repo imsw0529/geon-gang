@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Login() {
-    const [inputId, setInputId] = useState('');
-    const [inputPw, setInputPw] = useState('');
+    const [inputId, setInputId] = React.useState('');
+    const [inputPw, setInputPw] = React.useState('');
 
     const handleInputId = (e) => {
         setInputId(e.target.value);
@@ -13,7 +13,8 @@ function Login() {
     };
 
     const onSubmitAccount = () => {
-
+        console.log(inputId);
+        console.log(inputPw);
     };
 
     return (
@@ -32,7 +33,7 @@ function Login() {
                 <button onClick={onSubmitAccount}>로그인</button>
             </div>
             <div className="login-sub">
-                <span>회원 가입</span>
+                <p>회원 가입</p>
             </div>
         </div>
     );
