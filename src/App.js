@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Login from './components/Login';
+
+function Title() {
+  return (
+    <header>
+      <h1>개강총회 건강증진 대회</h1>
+      <Login />
+    </header>
+  );
+};
+
+function MenuBar() {
+  return (
+    <div className='menu-bar'>
+      <p>menu1</p>
+      <p>menu2</p>
+      <p>menu3</p>
+      <p>menu4</p>
+    </div>
+  );
+};
+
+function MainPage() {
+  return (
+    <div className='main'>
+      <p>MainPage</p>
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Title />
+      <MenuBar />
+      <MainPage />
     </div>
   );
-}
+};
 
 export default App;
