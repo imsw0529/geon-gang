@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Login from './components/Login';
 import User from './components/User';
 import MenuBar from './components/MenuBar';
 import MainPage from './components/MainPage';

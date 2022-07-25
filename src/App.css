@@ -8,12 +8,19 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: aliceblue;
+  padding: 5;
 }
 
 header h1 {
   background-color: aqua;
-  padding: 0 5%;
+  margin: 0;
+  padding: 1vmin;
   text-align: left;
+}
+
+.user {
+  margin: auto 1vmin;
+  height: 100%;
 }
 
 .people-icon {
@@ -22,9 +29,18 @@ header h1 {
 }
 
 .login {
-  width: 20%;
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: deeppink;
+  max-width: 200px;
+  max-height: 100px;
   padding: 0;
   margin: 0;
+}
+
+.user:hover .login {
+  display: block;
 }
 
 .login-input {
@@ -48,7 +64,6 @@ header h1 {
 
 .login-sub p {
   margin: 0 auto;
-  font-size: 0.7em;
 }
 
 .menu-bar ul {
