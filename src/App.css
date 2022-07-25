@@ -51,14 +51,14 @@ header h1 {
   font-size: 0.7em;
 }
 
-.menu-bar {
-  display: flex;
-  justify-content: flex-start;
+.menu-bar ul {
   padding: 0 1vmin;
 }
 
-.menu-bar * {
+.menu-bar li {
   margin-right: 2vmin;
+  display: inline;
+  cursor: pointer;
 }
 
 .main {

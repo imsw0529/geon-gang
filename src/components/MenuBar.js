@@ -1,10 +1,14 @@
-function MenuBar() {
+import React from "react";
+
+function MenuBar({ selectedMenu, onSelect }) {
     return (
         <div className='menu-bar'>
-            <p>menu1</p>
-            <p>menu2</p>
-            <p>menu3</p>
-            <p>menu4</p>
+            <ul>
+                <li onClick={() => onSelect(0)}>menu1</li>
+                <li onClick={() => onSelect(1)}>menu2</li>
+                <li onClick={() => onSelect(2)}>menu3</li>
+                <li onClick={() => onSelect(3)}>menu4</li>
+            </ul>
         </div>
     );
 };

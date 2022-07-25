@@ -15,11 +15,17 @@ function Title() {
 };
 
 function App() {
+  const [selectedMenu, setSelectedMenu] = React.useState(0);
+
+  function handleSelect(n) {
+    setSelectedMenu(n);
+  }
+
   return (
     <div>
       <Title />
-      <MenuBar />
-      <MainPage />
+      <MenuBar selectedMenu={selectedMenu} onSelect={handleSelect} />
+      <MainPage selectedMenu={selectedMenu} />
     </div>
   );
 };

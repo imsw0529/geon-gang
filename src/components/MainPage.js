@@ -1,7 +1,7 @@
-function MainPage() {
+function MainPage({ selectedMenu }) {
     return (
         <div className='main'>
-            <p>MainPage</p>
+            <p>MainPage {selectedMenu}</p>
         </div>
     );
 };
