@@ -21,6 +21,7 @@ header h1 {
 .user {
   margin: auto 1vmin;
   height: 100%;
+  cursor: pointer;
 }
 
 .people-icon {
@@ -85,4 +86,23 @@ header h1 {
   padding: 0 1vmin;
   background-color: bisque;
   overflow: auto;
+}
+
+.ranking-table {
+  margin: 0;
+  width: 100%;
+  border-spacing: 1vmin;
+  border-collapse: collapse;
+}
+
+.ranking-table p {
+  margin: 0.1vmin 0;
+}
+
+.ranking-table,
+.ranking-table th,
+.ranking-table td {
+  text-align: left;
+  padding: 1vmin;
+  border: 0.1vmin solid;
 }
