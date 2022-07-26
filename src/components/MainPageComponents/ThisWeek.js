@@ -37,7 +37,7 @@ function ThisWeek() {
                 <td>{heartBar + percent.toFixed(2) + '%'}</td>
             </tr>
         )
-    })
+    });
 
     return (
         <div>
