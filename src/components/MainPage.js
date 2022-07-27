@@ -1,4 +1,5 @@
 import MyPage from "./MainPageComponents/MyPage";
+import MyRecord from "./MainPageComponents/MyRecord";
 import PeopleGoals from "./MainPageComponents/PeopleGoals";
 import ThisMonth from "./MainPageComponents/ThisMonth";
 import ThisWeek from "./MainPageComponents/ThisWeek";
@@ -22,6 +23,9 @@ function MainPage({ selectedMenu }) {
             break;
         case 4:
             showPage = <Today />
+            break;
+        case 5:
+            showPage = <MyRecord />
             break;
         default:
             alert('선택된 페이지가 존재하지 않습니다.');

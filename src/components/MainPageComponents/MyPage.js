@@ -120,7 +120,7 @@ function UserGoal() {
                     />
                 </td>
                 <td>
-                    <button onClick={() => { removeGoal(index) }}>
+                    <button type="button" onClick={() => { removeGoal(index) }}>
                         지우기
                     </button>
                 </td>
@@ -161,6 +161,7 @@ function MyPage() {
         <div>
             <h3>My Page</h3>
             <UserData />
+            <h3>목표 수정</h3>
             <UserGoal />
         </div>
     );
