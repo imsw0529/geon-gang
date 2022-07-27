@@ -3,8 +3,6 @@ function ThisMonth() {
     let d2 = new Date().setMonth(new Date().getMonth() + 1, 1);
     const dayNumber = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
 
-    console.log(dayNumber);
-
     const thisWeekList = [
         {
             id: 'id1',
