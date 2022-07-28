@@ -96,7 +96,7 @@ header h1 {
 }
 
 .ranking-table p {
-  margin: 0.1vmin 0;
+  margin: 0.1rem 0;
 }
 
 .ranking-table,
@@ -105,4 +105,18 @@ header h1 {
   text-align: left;
   padding: 1vmin;
   border: 0.1vmin solid;
+}
+
+.table {
+  padding: 0 1rem;
+}
+
+.table-row {
+  padding: 10px 0;
+  display: flex;
+  border-bottom: 1px solid;
+}
+
+.table-row .goal-name {
+  flex: 1;
 }

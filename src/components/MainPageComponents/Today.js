@@ -1,6 +1,8 @@
 import React from "react";
+import util from "../../functions/util";
 
 function Today() {
+    const [inputDate, setInputDate] = React.useState(util.dateToString(new Date()));
     const [userGoalList, setUserGoalList] = React.useState([
         'goal1',
         'goal2',
@@ -14,14 +16,10 @@ function Today() {
 
     const userGoalElements = userGoalList.map((goal, index) => {
         return (
-            <tr key={index}>
-                <td>
-                    <p>{goal}</p>
-                </td>
-                <td>
-                    <input type="checkbox" name="goal" value={goal} />
-                </td>
-            </tr>
+            <div key={index} className="table-row">
+                <span className="goal-name">{goal}</span>
+                <input type="checkbox" name="goal" value={goal} />
+            </div>
         )
     });
 
@@ -32,13 +30,17 @@ function Today() {
     return (
         <div>
             <h3>오늘의 운동</h3>
-            <form onSubmit={handleChange}>
-                <table>
-                    <tbody>
-                        {userGoalElements}
-                    </tbody>
-                </table>
-            </form>
+            <div className="table">
+                <form onSubmit={handleChange}>
+                    <div className="table-row">
+                        <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
+                    </div>
+                    {userGoalElements}
+                    <div className="table-row">
+
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
