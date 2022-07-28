@@ -14,19 +14,19 @@ header {
 header h1 {
   background-color: aqua;
   margin: 0;
-  padding: 1vmin;
+  padding: 1rem;
   text-align: left;
 }
 
 .user {
-  margin: auto 1vmin;
+  margin: auto 1rem;
   height: 100%;
   cursor: pointer;
 }
 
 .people-icon {
-  width: 5vmin;
-  height: 5vmin;
+  width: 5rem;
+  height: 5rem;
 }
 
 .login {
@@ -75,7 +75,7 @@ header h1 {
 
 .menu-bar p {
   height: 100%;
-  padding: 1vmin;
+  padding: 1rem;
   margin: 0;
   display: inline;
   cursor: pointer;
@@ -83,7 +83,7 @@ header h1 {
 
 .main {
   margin: 0 auto;
-  padding: 0 1vmin;
+  padding: 0 1rem;
   background-color: bisque;
   overflow: auto;
 }
@@ -91,7 +91,7 @@ header h1 {
 .ranking-table {
   margin: 0;
   width: 100%;
-  border-spacing: 1vmin;
+  border-spacing: 1rem;
   border-collapse: collapse;
 }
 
@@ -103,8 +103,8 @@ header h1 {
 .ranking-table th,
 .ranking-table td {
   text-align: left;
-  padding: 1vmin;
-  border: 0.1vmin solid;
+  padding: 1rem;
+  border: 0.1rem solid;
 }
 
 .table {
@@ -112,11 +112,17 @@ header h1 {
 }
 
 .table-row {
-  padding: 10px 0;
   display: flex;
+  padding: 10px 0;
   border-bottom: 1px solid;
 }
 
 .table-row .goal-name {
   flex: 1;
+}
+
+.submit-row {
+  display: flex;
+  padding: 10px 0;
+  justify-content: right;
 }
