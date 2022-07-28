@@ -35,21 +35,19 @@ function ThisMonth() {
         heartBar += ' ';
 
         return (
-            <tr key={user.id}>
-                <th>{user.name}</th>
-                <td>{heartBar + percent.toFixed(2) + '%'}</td>
-            </tr>
+            <div key={user.id} className="table-row">
+                <span className="table-user">{user.name}</span>
+                <span className="table-data">{heartBar + percent.toFixed(2) + '%'}</span>
+            </div>
         )
     });
 
     return (
         <div>
             <h3>이번 달의 달성률</h3>
-            <table className="ranking-table">
-                <tbody>
-                    {thisWeekElements}
-                </tbody>
-            </table>
+            <div className="table">
+                {thisWeekElements}
+            </div>
         </div>
     );
 }

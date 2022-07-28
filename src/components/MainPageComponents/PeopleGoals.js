@@ -22,24 +22,22 @@ function PeopleGoals() {
 
     const goalElements = goalList.map((user) => {
         return (
-            <tr key={user.id}>
-                <th>{user.name}</th>
-                <td><div>
-                    <p>{user.goalText}</p>
+            <div key={user.id} className="table-row">
+                <span className="table-user">{user.name}</span>
+                <div className="table-goal">
+                    <p className="goal-text">{user.goalText}</p>
                     <p>{user.goal}</p>
-                </div></td>
-            </tr>
+                </div>
+            </div>
         );
     });
 
     return (
         <div>
             <h3>각자의 목표</h3>
-            <table className="ranking-table">
-                <tbody>
-                    {goalElements}
-                </tbody>
-            </table>
+            <div className="table">
+                {goalElements}
+            </div>
         </div>
     );
 }
