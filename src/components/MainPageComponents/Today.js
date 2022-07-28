@@ -1,16 +1,13 @@
 import React from "react";
+import server from "../../functions/server";
 import util from "../../functions/util";
 
 function Today() {
     const [inputDate, setInputDate] = React.useState(util.dateToString(new Date()));
     const [checkedGoal, setCheckedGoal] = React.useState([]);
 
-    const userGoalList = [
-        'goal1',
-        'goal2',
-        'goal3',
-        'goal4'
-    ];
+    const userId = 'userid'
+    const userGoalList = server.userData(userId).goal;
 
     function handleChange(e, index) {
         let temp = checkedGoal;

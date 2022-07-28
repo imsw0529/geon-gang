@@ -1,10 +1,12 @@
 import React from "react";
+import server from "../../../functions/server";
 
-function UserData() {
-    const [userId, setId] = React.useState('user id');
-    const [userName, setName] = React.useState('user name');
+function UserData({ userId }) {
+    const userData = server.userData(userId);
+
+    const [userName, setName] = React.useState(userData.userName);
     const [userPw, setPw] = React.useState('');
-    const [userGoalText, setGoalText] = React.useState('user goal');
+    const [userGoalText, setGoalText] = React.useState(userData.userGoalText);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -25,7 +27,7 @@ function UserData() {
                                 type="text"
                                 name="userId"
                                 value={userId}
-                                onChange={(e) => setId(e.target.value)}
+                                readOnly
                             />
                         </td>
                     </tr>

@@ -1,12 +1,9 @@
 import React from "react";
+import server from "../../../functions/server";
 
-function UserGoal() {
-    const [userGoalList, setUserGoalList] = React.useState([
-        'goal1',
-        'goal2',
-        'goal3',
-        'goal4'
-    ])
+function UserGoal({ userId }) {
+    let userGoal = server.userGoal(userId);
+    const [userGoalList, setUserGoalList] = React.useState(userGoal);
 
     function handleChange(e, index) {
         const prev = userGoalList.slice(0, index);

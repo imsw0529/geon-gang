@@ -1,22 +1,8 @@
+import server from "../../functions/server";
+
 function ThisWeek() {
     const dayNumber = 7;
-    const thisWeekList = [
-        {
-            id: 'id1',
-            name: 'user1',
-            checkedGoal: 4
-        },
-        {
-            id: 'id2',
-            name: 'user2',
-            checkedGoal: 3
-        },
-        {
-            id: 'id3',
-            name: 'user3',
-            checkedGoal: 6
-        }
-    ];
+    const thisWeekList = server.thisWeek();
 
     const thisWeekElements = thisWeekList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;
