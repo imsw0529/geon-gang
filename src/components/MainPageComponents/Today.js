@@ -2,12 +2,12 @@ import React from "react";
 import server from "../../functions/server";
 import util from "../../functions/util";
 
-function Today() {
+function Today({ userId }) {
     const [inputDate, setInputDate] = React.useState(util.dateToString(new Date()));
     const [checkedGoal, setCheckedGoal] = React.useState([]);
+    const [userGoalList, setUserGoalList] = React.useState([]);
 
-    const userId = 'userid'
-    const userGoalList = server.userData(userId).goal;
+    React.useEffect(() => { setUserGoalList(server.userGoal(userId)) }, []);
 
     function handleChange(e, index) {
         let temp = checkedGoal;

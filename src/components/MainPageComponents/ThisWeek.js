@@ -1,8 +1,11 @@
+import React from "react";
 import server from "../../functions/server";
 
 function ThisWeek() {
     const dayNumber = 7;
-    const thisWeekList = server.thisWeek();
+    const [thisWeekList, setThisWeekList] = React.useState([]);
+
+    React.useEffect(() => { setThisWeekList(server.thisWeek()); }, [])
 
     const thisWeekElements = thisWeekList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;

@@ -1,7 +1,10 @@
+import React from "react";
 import server from "../../functions/server";
 
 function PeopleGoals() {
-    const goalList = server.peopleGoal();
+    const [goalList, setGoalList] = React.useState([]);
+
+    React.useEffect(() => { setGoalList(server.peopleGoal()) }, []);
 
     const goalElements = goalList.map((user) => {
         return (

@@ -1,3 +1,4 @@
+import React from "react";
 import server from "../../functions/server";
 
 function ThisMonth() {
@@ -5,7 +6,8 @@ function ThisMonth() {
     let d2 = new Date().setMonth(new Date().getMonth() + 1, 1);
     const dayNumber = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
 
-    const thisMonthList = server.thisMonth();
+    const [thisMonthList, setThisMonthList] = React.useState([]);
+    React.useEffect(() => { setThisMonthList(server.thisMonth()) }, []);
 
     const thisMonthElements = thisMonthList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;

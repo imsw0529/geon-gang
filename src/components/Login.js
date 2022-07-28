@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login() {
+function Login({ handleUserId, handleUserName }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
 
@@ -15,6 +15,8 @@ function Login() {
     const onSubmitAccount = () => {
         console.log(inputId);
         console.log(inputPw);
+        handleUserId(inputId);
+        handleUserName('user name state');
     };
 
     return (

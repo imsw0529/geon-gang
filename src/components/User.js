@@ -2,21 +2,29 @@ import React from 'react';
 import people_icon from '../asset/people-icon.svg';
 import Login from './Login';
 
-function User({ onMyPageClicked }) {
-    const [isLogin, setIsLogin] = React.useState(true);
+function User({ onMyPageClicked, id }) {
+    const [userId, setUserId] = React.useState(id);
+    const [userName, setUserName] = React.useState('');
 
     const handleMyPageClicked = () => {
-        if (!isLogin) { return; }
+        if (!userId) { return; }
         onMyPageClicked(0);
     };
+
+    function handleUserId(inputId) {
+        setUserId(inputId);
+    }
+    function handleUserName(inputName) {
+        setUserName(inputName);
+    }
 
     return (
         <div className='user' onClick={handleMyPageClicked}>
             <div style={{ display: 'flex' }}>
-                {isLogin ? <p style={{ marginRight: '1vmin' }}>user name</p> : null}
+                {userId ? <p style={{ marginRight: '1rem' }}>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
-            {isLogin ? null : <Login />}
+            {userId ? null : <Login handleUserId={handleUserId} handleUserName={handleUserName} />}
         </div>
     );
 };

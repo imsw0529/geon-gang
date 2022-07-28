@@ -13,7 +13,6 @@ const server = (function () {
     }
 
     function requestUserGoal(userid) {
-        console.log('request user goal');
         return [
             'goal1 from server',
             'goal2 from server',

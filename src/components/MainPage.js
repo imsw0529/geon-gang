@@ -5,12 +5,12 @@ import ThisMonth from "./MainPageComponents/ThisMonth";
 import ThisWeek from "./MainPageComponents/ThisWeek";
 import Today from "./MainPageComponents/Today";
 
-function MainPage({ selectedMenu }) {
+function MainPage({ selectedMenu, userId }) {
     let showPage = null
 
     switch (selectedMenu) {
         case 0:
-            showPage = <MyPage />
+            showPage = <MyPage userId={userId} />
             break;
         case 1:
             showPage = <ThisWeek />
@@ -22,7 +22,7 @@ function MainPage({ selectedMenu }) {
             showPage = <PeopleGoals />
             break;
         case 4:
-            showPage = <Today />
+            showPage = <Today userId={userId} />
             break;
         case 5:
             showPage = <MyRecord />

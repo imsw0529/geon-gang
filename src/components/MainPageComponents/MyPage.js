@@ -2,9 +2,7 @@ import React from "react";
 import UserData from "./MyPageComponents/UserData";
 import UserGoal from "./MyPageComponents/UserGoal"
 
-function MyPage() {
-    const userId = 'userid';
-
+function MyPage({ userId }) {
     return (
         <div>
             <h3>My Page</h3>
