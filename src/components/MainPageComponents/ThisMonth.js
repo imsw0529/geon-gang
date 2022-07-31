@@ -1,10 +1,9 @@
 import React from "react";
 import server from "../../functions/server";
+import util from "../../functions/util";
 
 function ThisMonth() {
-    let d1 = new Date().setDate(1);
-    let d2 = new Date().setMonth(new Date().getMonth() + 1, 1);
-    const dayNumber = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
+    const dayNumber = util.monthDayNum();
 
     const [thisMonthList, setThisMonthList] = React.useState([]);
     React.useEffect(() => { setThisMonthList(server.thisMonth().list) }, []);
