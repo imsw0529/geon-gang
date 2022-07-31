@@ -5,7 +5,14 @@ function ThisWeek() {
     const dayNumber = 7;
     const [thisWeekList, setThisWeekList] = React.useState([]);
 
-    React.useEffect(() => { setThisWeekList(server.thisWeek().list); }, [])
+    async function initialList() {
+        const response = await server.thisWeek();
+        setThisWeekList(response);
+    }
+
+    React.useEffect(() => {
+        initialList();
+    }, [])
 
     const thisWeekElements = thisWeekList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;

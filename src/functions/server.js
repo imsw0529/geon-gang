@@ -1,8 +1,8 @@
 import configData from '../config';
 
 const server = (function () {
-    const parsed = configData;
-    console.log(parsed);
+    const address = configData.address;
+    // console.log(address);
 
     function getUserData(userid) {
         return {
@@ -23,27 +23,11 @@ const server = (function () {
         }
     }
 
-    function getThisWeek() {
+    async function getThisWeek() {
+        const response = await fetch(`${address}/this_week`);
+        const responseJson = await response.json();
 
-        return {
-            list: [
-                {
-                    id: 'id1',
-                    name: 'user1 from server',
-                    checkedGoal: 4
-                },
-                {
-                    id: 'id2',
-                    name: 'user2 from server',
-                    checkedGoal: 3
-                },
-                {
-                    id: 'id3',
-                    name: 'user3 from server',
-                    checkedGoal: 6
-                }
-            ]
-        };
+        return responseJson.list;
     }
 
     function getThisMonth() {
