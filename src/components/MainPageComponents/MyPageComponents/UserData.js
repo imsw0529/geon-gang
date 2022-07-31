@@ -16,12 +16,16 @@ function UserData({ userId }) {
         initialFunc();
     }, [])
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(userId);
-        console.log(userName);
-        console.log(userPw);
-        console.log(userGoalText);
+        const data = {
+            id: userId,
+            name: userName,
+            password: userPw,
+            goalText: userGoalText
+        }
+        console.log(data);
+        await server.postUserData(data);
     }
 
     return (

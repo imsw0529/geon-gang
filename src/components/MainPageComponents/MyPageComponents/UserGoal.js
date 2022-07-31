@@ -61,9 +61,14 @@ function UserGoal({ userId }) {
         )
     });
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(userGoalList);
+        const data = {
+            id: userId,
+            goal: userGoalList.join('/')
+        }
+        console.log(data);
+        await server.postUserGoal(data);
     }
 
     return (

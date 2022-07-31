@@ -57,7 +57,34 @@ const server = (function () {
                 date: data.date,
                 goal: data.goal,
                 check: data.check
-            })
+            });
+            window.alert(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function postUserData(data) {
+        try {
+            const response = await axios.post(`${address}/update_user`, {
+                id: data.id,
+                name: data.name,
+                password: data.password,
+                goalText: data.goalText
+            });
+            window.alert(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function postUserGoal(data) {
+        try {
+            const response = await axios.post(`${address}/update_goal`, {
+                id: data.id,
+                goal: data.goal,
+            });
+            window.alert(response.data);
         } catch (e) {
             console.error(e);
         }
@@ -70,6 +97,8 @@ const server = (function () {
         thisMonth: getThisMonth,
         peopleGoal: getPeopleGoal,
         postToday: postToday,
+        postUserData, postUserData,
+        postUserGoal, postUserGoal,
     }
 }());
 
