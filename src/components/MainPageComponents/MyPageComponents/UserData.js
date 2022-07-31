@@ -27,7 +27,7 @@ function UserData({ userId }) {
             password: userPw,
             goalText: userGoalText
         }
-        await server.postUserData(data);
+        await server.updateUserData(data);
     }
 
     return (

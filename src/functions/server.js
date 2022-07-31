@@ -64,7 +64,7 @@ const server = (function () {
         }
     }
 
-    async function postUserData(data) {
+    async function updateUserData(data) {
         try {
             const response = await axios.post(`${address}/update_user`, {
                 id: data.id,
@@ -78,7 +78,7 @@ const server = (function () {
         }
     }
 
-    async function postUserGoal(data) {
+    async function updateUserGoal(data) {
         try {
             const response = await axios.post(`${address}/update_goal`, {
                 id: data.id,
@@ -97,8 +97,8 @@ const server = (function () {
         thisMonth: getThisMonth,
         peopleGoal: getPeopleGoal,
         postToday: postToday,
-        postUserData, postUserData,
-        postUserGoal, postUserGoal,
+        updateUserData: updateUserData,
+        updateUserGoal: updateUserGoal,
     }
 }());
 
