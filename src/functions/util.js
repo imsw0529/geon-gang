@@ -9,7 +9,7 @@ const util = {
         return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
     },
 
-    confirmMessage: "수정하시겠습니까?"
+    confirmMessage: "입력하시겠습니까?"
 }
 
 export default util

@@ -70,7 +70,7 @@ function UserGoal({ userId }) {
             id: userId,
             goal: userGoalList.join('/')
         }
-        await server.postUserGoal(data);
+        await server.updateUserGoal(data);
     }
 
     return (

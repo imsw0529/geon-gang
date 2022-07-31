@@ -70,7 +70,7 @@ const server = (function () {
                 id: data.id,
                 name: data.name,
                 password: data.password,
-                goalText: data.goalText
+                goalText: data.goalText,
             });
             window.alert(response.data);
         } catch (e) {
@@ -90,6 +90,22 @@ const server = (function () {
         }
     }
 
+    async function registUser(data) {
+        try {
+            const response = await axios.post(`${address}/regist_user`, {
+                id: data.id,
+                name: data.name,
+                password: data.password,
+                goalText: data.goalText,
+                goal: data.goal,
+                code: data.code,
+            });
+            window.alert(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     return {
         userData: getUserData,
         userGoal: getUserGoal,
@@ -99,6 +115,7 @@ const server = (function () {
         postToday: postToday,
         updateUserData: updateUserData,
         updateUserGoal: updateUserGoal,
+        registUser: registUser,
     }
 }());
 

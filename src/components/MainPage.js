@@ -10,7 +10,7 @@ function MainPage({ selectedMenu, userId }) {
 
     switch (selectedMenu) {
         case 0:
-            showPage = <MyPage userId={userId} />
+            showPage = <MyPage userId={userId} mode={1} />
             break;
         case 1:
             showPage = <ThisWeek />

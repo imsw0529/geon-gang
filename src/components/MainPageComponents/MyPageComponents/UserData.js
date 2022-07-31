@@ -2,7 +2,7 @@ import React from "react";
 import server from "../../../functions/server";
 import util from "../../../functions/util";
 
-function UserData({ userId }) {
+function UserData({ userId, mode }) {
     const [userName, setName] = React.useState('');
     const [userPw, setPw] = React.useState('');
     const [userGoalText, setGoalText] = React.useState('');
