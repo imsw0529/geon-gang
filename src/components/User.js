@@ -11,6 +11,10 @@ function User({ onMyPageClicked, id }) {
         onMyPageClicked(0);
     };
 
+    const handleRegistClicked = () => {
+        onMyPageClicked(6);
+    }
+
     function handleUserId(inputId) {
         setUserId(inputId);
     }
@@ -24,7 +28,7 @@ function User({ onMyPageClicked, id }) {
                 {userId ? <p style={{ marginRight: '1rem' }}>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
-            {userId ? null : <Login handleUserId={handleUserId} handleUserName={handleUserName} />}
+            {userId ? null : <Login handleUserId={handleUserId} handleUserName={handleUserName} handleRegistClicked={handleRegistClicked} />}
         </div>
     );
 };

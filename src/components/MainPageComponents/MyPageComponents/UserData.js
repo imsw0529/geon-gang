@@ -2,12 +2,13 @@ import React from "react";
 import server from "../../../functions/server";
 import util from "../../../functions/util";
 
-function UserData({ userId, mode }) {
+function UserData({ userId }) {
     const [userName, setName] = React.useState('');
     const [userPw, setPw] = React.useState('');
     const [userGoalText, setGoalText] = React.useState('');
 
     async function initialFunc() {
+        if (userId === null) { return }
         const userData = await server.userData(userId);
         setName(userData.userName);
         setGoalText(userData.userGoalText);
@@ -28,6 +29,7 @@ function UserData({ userId, mode }) {
             goalText: userGoalText
         }
         await server.updateUserData(data);
+
     }
 
     return (

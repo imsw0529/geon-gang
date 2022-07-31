@@ -7,13 +7,10 @@ function MyPage({ userId, mode: inputMode }) {
     const [mode, setMode] = React.useState(inputMode);
     let user = null;
     switch (mode) {
-        case 0: // 등록
-            user = <UserData userId={''} />
+        case 0: // 조회
+            user = <UserPage userId={userId} changeMode={() => { setMode(1) }} />
             break;
-        case 1: // 조회
-            user = <UserPage userId={userId} changeMode={() => { setMode(2) }} />
-            break;
-        case 2: // 수정
+        case 1: // 수정
             user = <UserData userId={userId} />
             break;
     }

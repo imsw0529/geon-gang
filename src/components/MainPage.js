@@ -4,13 +4,14 @@ import PeopleGoals from "./MainPageComponents/PeopleGoals";
 import ThisMonth from "./MainPageComponents/ThisMonth";
 import ThisWeek from "./MainPageComponents/ThisWeek";
 import Today from "./MainPageComponents/Today";
+import UserRegist from "./MainPageComponents/MyPageComponents/UserRegist";
 
 function MainPage({ selectedMenu, userId }) {
     let showPage = null
 
     switch (selectedMenu) {
         case 0:
-            showPage = <MyPage userId={userId} mode={1} />
+            showPage = <MyPage userId={userId} mode={0} />
             break;
         case 1:
             showPage = <ThisWeek />
@@ -27,8 +28,11 @@ function MainPage({ selectedMenu, userId }) {
         case 5:
             showPage = <MyRecord />
             break;
+        case 6:
+            showPage = <UserRegist />
+            break;
         default:
-            alert('선택된 페이지가 존재하지 않습니다.');
+            window.alert('선택된 페이지가 존재하지 않습니다.');
     }
 
     return (

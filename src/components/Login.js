@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login({ handleUserId, handleUserName }) {
+function Login({ handleUserId, handleUserName, handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
 
@@ -35,7 +35,7 @@ function Login({ handleUserId, handleUserName }) {
                 <button onClick={onSubmitAccount}>로그인</button>
             </div>
             <div className="login-sub">
-                <p>회원 가입</p>
+                <p onClick={handleRegistClicked}>회원 가입</p>
             </div>
         </div>
     );
