@@ -1,5 +1,6 @@
 import React from "react";
 import server from "../../../functions/server";
+import util from "../../../functions/util";
 
 function UserGoal({ userId }) {
     const [userGoalList, setUserGoalList] = React.useState([]);
@@ -63,11 +64,12 @@ function UserGoal({ userId }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        const result = window.confirm(util.confirmMessage);
+        if (!result) { return }
         const data = {
             id: userId,
             goal: userGoalList.join('/')
         }
-        console.log(data);
         await server.postUserGoal(data);
     }
 

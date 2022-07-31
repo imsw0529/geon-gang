@@ -7,7 +7,9 @@ const util = {
         let d1 = new Date().setDate(1);
         let d2 = new Date().setMonth(new Date().getMonth() + 1, 1);
         return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
-    }
+    },
+
+    confirmMessage: "수정하시겠습니까?"
 }
 
 export default util

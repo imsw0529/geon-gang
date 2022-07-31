@@ -1,5 +1,6 @@
 import React from "react";
 import server from "../../../functions/server";
+import util from "../../../functions/util";
 
 function UserData({ userId }) {
     const [userName, setName] = React.useState('');
@@ -18,13 +19,14 @@ function UserData({ userId }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        const result = window.confirm(util.confirmMessage);
+        if (!result) { return }
         const data = {
             id: userId,
             name: userName,
             password: userPw,
             goalText: userGoalText
         }
-        console.log(data);
         await server.postUserData(data);
     }
 
