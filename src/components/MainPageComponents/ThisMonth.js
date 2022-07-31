@@ -12,7 +12,7 @@ function ThisMonth() {
     }
 
     React.useEffect(() => {
-        initialList()
+        initialList();
     }, []);
 
     const thisMonthElements = thisMonthList.map((user) => {

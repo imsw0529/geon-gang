@@ -37,29 +37,11 @@ const server = (function () {
         return responseJson.list;
     }
 
-    function getPeopleGoal() {
-        return {
-            list: [
-                {
-                    id: 'id1',
-                    name: 'user1 from server',
-                    goalText: 'goalText1',
-                    goal: 'goal'
-                },
-                {
-                    id: 'id2',
-                    name: 'user2 from server',
-                    goalText: 'goalText2',
-                    goal: 'goal'
-                },
-                {
-                    id: 'id3',
-                    name: 'user3 from server',
-                    goalText: 'goalText3',
-                    goal: 'goal'
-                },
-            ]
-        };
+    async function getPeopleGoal() {
+        const response = await fetch(`${address}/people_goal`);
+        const responseJson = await response.json();
+
+        return responseJson.list;
     }
 
     return {
