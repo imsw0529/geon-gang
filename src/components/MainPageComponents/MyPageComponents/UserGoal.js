@@ -4,7 +4,14 @@ import server from "../../../functions/server";
 function UserGoal({ userId }) {
     const [userGoalList, setUserGoalList] = React.useState([]);
 
-    React.useEffect(() => { setUserGoalList(server.userGoal(userId).list) }, [])
+    async function initialList() {
+        const response = await server.userGoal(userId);
+        setUserGoalList(response);
+    }
+
+    React.useEffect(() => {
+        initialList();
+    }, [])
 
     function handleChange(e, index) {
         const prev = userGoalList.slice(0, index);

@@ -4,23 +4,18 @@ const server = (function () {
     const address = configData.address;
     // console.log(address);
 
-    function getUserData(userid) {
-        return {
-            userId: userid,
-            userName: "userName",
-            userGoalText: "userGoalText from server",
-        };
+    async function getUserData(userid) {
+        const response = await fetch(`${address}/user/${userid}`);
+        const responseJson = await response.json();
+
+        return responseJson;
     }
 
-    function getUserGoal(userid) {
-        return {
-            list: [
-                'goal1 from server',
-                'goal2 from server',
-                'goal3 from server',
-                'goal4 from server'
-            ]
-        }
+    async function getUserGoal(userid) {
+        const response = await fetch(`${address}/user_goal/${userid}`);
+        const responseJson = await response.json();
+
+        return responseJson.list;
     }
 
     async function getThisWeek() {

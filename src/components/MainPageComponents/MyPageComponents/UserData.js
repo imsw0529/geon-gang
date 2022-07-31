@@ -2,11 +2,19 @@ import React from "react";
 import server from "../../../functions/server";
 
 function UserData({ userId }) {
-    const userData = server.userData(userId);
-
-    const [userName, setName] = React.useState(userData.userName);
+    const [userName, setName] = React.useState('');
     const [userPw, setPw] = React.useState('');
-    const [userGoalText, setGoalText] = React.useState(userData.userGoalText);
+    const [userGoalText, setGoalText] = React.useState('');
+
+    async function initialFunc() {
+        const userData = await server.userData(userId);
+        setName(userData.userName);
+        setGoalText(userData.userGoalText);
+    }
+
+    React.useEffect(() => {
+        initialFunc();
+    }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
