@@ -7,7 +7,7 @@ function Today({ userId }) {
     const [checkedGoal, setCheckedGoal] = React.useState([]);
     const [userGoalList, setUserGoalList] = React.useState([]);
 
-    React.useEffect(() => { setUserGoalList(server.userGoal(userId)) }, []);
+    React.useEffect(() => { setUserGoalList(server.userGoal(userId).list) }, []);
 
     function handleChange(e, index) {
         let temp = checkedGoal;

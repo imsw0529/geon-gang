@@ -7,7 +7,7 @@ function ThisMonth() {
     const dayNumber = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
 
     const [thisMonthList, setThisMonthList] = React.useState([]);
-    React.useEffect(() => { setThisMonthList(server.thisMonth()) }, []);
+    React.useEffect(() => { setThisMonthList(server.thisMonth().list) }, []);
 
     const thisMonthElements = thisMonthList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;

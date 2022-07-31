@@ -2,8 +2,9 @@ import React from "react";
 import server from "../../../functions/server";
 
 function UserGoal({ userId }) {
-    let userGoal = server.userGoal(userId);
-    const [userGoalList, setUserGoalList] = React.useState(userGoal);
+    const [userGoalList, setUserGoalList] = React.useState([]);
+
+    React.useEffect(() => { setUserGoalList(server.userGoal(userId).list) }, [])
 
     function handleChange(e, index) {
         const prev = userGoalList.slice(0, index);
