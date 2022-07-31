@@ -36,10 +36,23 @@ function Today({ userId }) {
         )
     });
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         console.log(inputDate);
         console.log(checkedGoal);
+
+        const check = (userGoalList.length === checkedGoal.length)
+        const goal = userGoalList.filter((gl, index) => checkedGoal.indexOf(index) !== -1).join('/');
+
+        const data = {
+            id: userId,
+            date: inputDate,
+            goal: goal,
+            check: check
+        }
+
+        console.log(data);
+        await server.postToday(data);
     }
 
     return (

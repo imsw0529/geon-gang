@@ -1,3 +1,4 @@
+import axios from 'axios';
 import configData from '../config';
 
 const server = (function () {
@@ -39,12 +40,26 @@ const server = (function () {
         return responseJson.list;
     }
 
+    async function postToday(data) {
+        try {
+            const response = await axios.post(`${address}/today`, {
+                id: data.id,
+                date: data.date,
+                goal: data.goal,
+                check: data.check
+            })
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     return {
         userData: getUserData,
         userGoal: getUserGoal,
         thisWeek: getThisWeek,
         thisMonth: getThisMonth,
         peopleGoal: getPeopleGoal,
+        postToday: postToday,
     }
 }());
 
