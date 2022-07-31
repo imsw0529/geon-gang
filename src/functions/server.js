@@ -30,26 +30,11 @@ const server = (function () {
         return responseJson.list;
     }
 
-    function getThisMonth() {
-        return {
-            list: [
-                {
-                    id: 'id1',
-                    name: 'user1 from server',
-                    checkedGoal: 20
-                },
-                {
-                    id: 'id2',
-                    name: 'user2 from server',
-                    checkedGoal: 14
-                },
-                {
-                    id: 'id3',
-                    name: 'user3 from server',
-                    checkedGoal: 8
-                }
-            ]
-        };
+    async function getThisMonth() {
+        const response = await fetch(`${address}/this_month`);
+        const responseJson = await response.json();
+
+        return responseJson.list;
     }
 
     function getPeopleGoal() {

@@ -4,9 +4,16 @@ import util from "../../functions/util";
 
 function ThisMonth() {
     const dayNumber = util.monthDayNum();
-
     const [thisMonthList, setThisMonthList] = React.useState([]);
-    React.useEffect(() => { setThisMonthList(server.thisMonth().list) }, []);
+
+    async function initialList() {
+        const response = await server.thisMonth();
+        setThisMonthList(response);
+    }
+
+    React.useEffect(() => {
+        initialList()
+    }, []);
 
     const thisMonthElements = thisMonthList.map((user) => {
         const percent = 100 * user.checkedGoal / dayNumber;
