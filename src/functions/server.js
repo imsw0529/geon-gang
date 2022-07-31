@@ -6,38 +6,48 @@ const server = (function () {
     // console.log(address);
 
     async function getUserData(userid) {
-        const response = await fetch(`${address}/user/${userid}`);
-        const responseJson = await response.json();
-
-        return responseJson;
+        try {
+            const response = await axios.get(`${address}/user/${userid}`);
+            return response.data;
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async function getUserGoal(userid) {
-        const response = await fetch(`${address}/user_goal/${userid}`);
-        const responseJson = await response.json();
-
-        return responseJson.list;
+        try {
+            const response = await axios.get(`${address}/user_goal/${userid}`);
+            return response.data.list;
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async function getThisWeek() {
-        const response = await fetch(`${address}/this_week`);
-        const responseJson = await response.json();
-
-        return responseJson.list;
+        try {
+            const response = await axios.get(`${address}/this_week`);
+            return response.data.list;
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async function getThisMonth() {
-        const response = await fetch(`${address}/this_month`);
-        const responseJson = await response.json();
-
-        return responseJson.list;
+        try {
+            const response = await axios.get(`${address}/this_month`);
+            return response.data.list;
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async function getPeopleGoal() {
-        const response = await fetch(`${address}/people_goal`);
-        const responseJson = await response.json();
-
-        return responseJson.list;
+        try {
+            const response = await axios.get(`${address}/people_goal`);
+            return response.data.list;
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async function postToday(data) {
