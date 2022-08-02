@@ -2,7 +2,7 @@ import React from 'react';
 import people_icon from '../asset/people-icon.svg';
 import Login from './Login';
 
-function User({ onMyPageClicked, id }) {
+function User({ changeUserId, onMyPageClicked, id }) {
     const [userId, setUserId] = React.useState(id);
     const [userName, setUserName] = React.useState('');
 
@@ -17,6 +17,7 @@ function User({ onMyPageClicked, id }) {
 
     function handleUserId(inputId) {
         setUserId(inputId);
+        changeUserId(inputId);
     }
     function handleUserName(inputName) {
         setUserName(inputName);

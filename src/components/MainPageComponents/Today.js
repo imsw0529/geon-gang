@@ -13,8 +13,12 @@ function Today({ userId }) {
     }
 
     React.useEffect(() => {
-        initialList();
-    }, []);
+        if (!userId) {
+
+        } else {
+            initialList();
+        }
+    }, [userId]);
 
     function handleChange(e, index) {
         let temp = checkedGoal;
@@ -53,15 +57,17 @@ function Today({ userId }) {
         <div>
             <h3>오늘의 운동</h3>
             <div className="table">
-                <form onSubmit={handleSubmit}>
-                    <div className="table-row">
-                        <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
-                    </div>
-                    {userGoalElements}
-                    <div className="submit-row">
-                        <button type="submit">입력</button>
-                    </div>
-                </form>
+                {!userId ?
+                    <p>로그인 후 이용해 주세요</p> :
+                    <form onSubmit={handleSubmit}>
+                        <div className="table-row">
+                            <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
+                        </div>
+                        {userGoalElements}
+                        <div className="submit-row">
+                            <button type="submit">입력</button>
+                        </div>
+                    </form>}
             </div>
         </div>
     );
