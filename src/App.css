@@ -149,3 +149,30 @@ header h1 {
   padding: 10px 0;
   justify-content: right;
 }
+
+.select-month {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+}
+
+.select-month * {
+  margin: 0.5rem 0;
+}
+
+.record-day {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+  border-bottom: 1px groove;
+}
+
+.record-day p {
+  flex: 1;
+  margin: 0;
+  font-weight: bold;
+}
+
+.record-day span {
+  flex: 3;
+}

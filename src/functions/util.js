@@ -9,6 +9,11 @@ const util = {
         return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
     },
 
+    monthStart: () => {
+        let d = new Date(new Date().setDate(1));
+        return d.getDay();
+    },
+
     confirmMessage: "입력하시겠습니까?"
 }
 
