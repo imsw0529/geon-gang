@@ -56,9 +56,9 @@ function Today({ userId }) {
     return (
         <div>
             <h3>오늘의 운동</h3>
-            <div className="table">
-                {!userId ?
-                    <p>로그인 후 이용해 주세요</p> :
+            {!userId ?
+                <p>로그인 후 이용해 주세요</p> :
+                <div className="table">
                     <form onSubmit={handleSubmit}>
                         <div className="table-row">
                             <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
@@ -67,8 +67,8 @@ function Today({ userId }) {
                         <div className="submit-row">
                             <button type="submit">입력</button>
                         </div>
-                    </form>}
-            </div>
+                    </form>
+                </div>}
         </div>
     );
 }

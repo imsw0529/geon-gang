@@ -26,7 +26,7 @@ function MainPage({ selectedMenu, userId }) {
             showPage = <Today userId={userId} />
             break;
         case 5:
-            showPage = <MyRecord />
+            showPage = <MyRecord userId={userId} />
             break;
         case 6:
             showPage = <UserRegist />

@@ -1,6 +1,6 @@
 import React from "react";
 
-function MyRecord() {
+function MyRecord({ userId }) {
     const [selectedYear, setSelectedYear] = React.useState(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = React.useState(new Date().getMonth() + 1);
     const [recordList, setRecordList] = React.useState([]);
@@ -8,26 +8,28 @@ function MyRecord() {
     const dayText = ['일', '월', '화', '수', '목', '금', '토'];
 
     function initialList() {
-        const response = [
-            {
-                day: 1,
-                goal: "goal1/goal2"
-            },
-            {
-                day: 2,
-                goal: "goal1/goal2"
-            },
-            {
-                day: 4,
-                goal: "goal1"
-            },
-        ];
-        setRecordList(response);
+        if (!userId) { } else {
+            const response = [
+                {
+                    day: 1,
+                    goal: "goal1/goal2"
+                },
+                {
+                    day: 2,
+                    goal: "goal1/goal2"
+                },
+                {
+                    day: 4,
+                    goal: "goal1"
+                },
+            ];
+            setRecordList(response);
+        }
     }
 
     React.useEffect(() => {
         initialList();
-    }, [selectedMonth])
+    }, [userId, selectedMonth])
 
     function handlePrevClick() {
         let n = selectedMonth - 1;
@@ -62,11 +64,12 @@ function MyRecord() {
     return (
         <div>
             <h3>나의 운동</h3>
-            <div className="select-month">
-                <button onClick={handlePrevClick}>이전달</button>
-                <h4>{selectedYear}년 {selectedMonth}월</h4>
-                <button onClick={handlePostClick}>다음달</button>
-            </div>
+            {!userId ? <p>로그인 후 이용해 주세요</p> :
+                <div className="select-month">
+                    <button onClick={handlePrevClick}>이전달</button>
+                    <h4>{selectedYear}년 {selectedMonth}월</h4>
+                    <button onClick={handlePostClick}>다음달</button>
+                </div>}
             {recordElements}
         </div>
     );
