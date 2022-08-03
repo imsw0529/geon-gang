@@ -1,4 +1,5 @@
 import React from "react";
+import server from "../../functions/server";
 
 function MyRecord({ userId }) {
     const [selectedYear, setSelectedYear] = React.useState(new Date().getFullYear());
@@ -7,28 +8,15 @@ function MyRecord({ userId }) {
 
     const dayText = ['일', '월', '화', '수', '목', '금', '토'];
 
-    function initialList() {
-        if (!userId) { } else {
-            const response = [
-                {
-                    day: 1,
-                    goal: "goal1/goal2"
-                },
-                {
-                    day: 2,
-                    goal: "goal1/goal2"
-                },
-                {
-                    day: 4,
-                    goal: "goal1"
-                },
-            ];
-            setRecordList(response);
-        }
+    async function initialList() {
+        const response = await server.myRecord(userId, selectedYear, selectedMonth);
+        setRecordList(response);
     }
 
     React.useEffect(() => {
-        initialList();
+        if (!userId) { } else {
+            initialList();
+        }
     }, [userId, selectedMonth])
 
     function handlePrevClick() {
@@ -56,7 +44,10 @@ function MyRecord({ userId }) {
             <div className="record-day" key={record.day}>
                 <p>{record.day}일</p>
                 <p>{dayText[date.getDay()]}</p>
-                <span>{record.goal}</span>
+                <div>
+                    <p>{record.goal}</p>
+                    {record.memo ? <span>{record.memo}</span> : ''}
+                </div>
             </div>
         )
     })

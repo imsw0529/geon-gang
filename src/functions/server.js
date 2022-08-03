@@ -5,6 +5,14 @@ const server = (function () {
     const address = configData.address;
     // console.log(address);
 
+    async function login(userid, password) {
+        try {
+            const response = await axios.post(``)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     async function getUserData(userid) {
         try {
             const response = await axios.get(`${address}/user/${userid}`);
@@ -44,6 +52,15 @@ const server = (function () {
     async function getPeopleGoal() {
         try {
             const response = await axios.get(`${address}/people_goal`);
+            return response.data.list;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function getMyRecord(userid, year, month) {
+        try {
+            const response = await axios.get(`${address}/my_record/${userid}/${year}/${month}`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -107,11 +124,13 @@ const server = (function () {
     }
 
     return {
+        login: login,
         userData: getUserData,
         userGoal: getUserGoal,
         thisWeek: getThisWeek,
         thisMonth: getThisMonth,
         peopleGoal: getPeopleGoal,
+        myRecord: getMyRecord,
         postToday: postToday,
         updateUserData: updateUserData,
         updateUserGoal: updateUserGoal,
