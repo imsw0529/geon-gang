@@ -6,12 +6,12 @@ import ThisWeek from "./MainPageComponents/ThisWeek";
 import Today from "./MainPageComponents/Today";
 import UserRegist from "./MainPageComponents/MyPageComponents/UserRegist";
 
-function MainPage({ selectedMenu, userId }) {
+function MainPage({ selectedMenu }) {
     let showPage = null
 
     switch (selectedMenu) {
         case 0:
-            showPage = <MyPage userId={userId} mode={0} />
+            showPage = <MyPage mode={0} />
             break;
         case 1:
             showPage = <ThisWeek />
@@ -23,10 +23,10 @@ function MainPage({ selectedMenu, userId }) {
             showPage = <PeopleGoals />
             break;
         case 4:
-            showPage = <Today userId={userId} />
+            showPage = <Today />
             break;
         case 5:
-            showPage = <MyRecord userId={userId} />
+            showPage = <MyRecord />
             break;
         case 6:
             showPage = <UserRegist />

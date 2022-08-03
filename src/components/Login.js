@@ -1,8 +1,10 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 
-function Login({ handleUserId, handleUserName, handleRegistClicked }) {
+function Login({ handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     const handleInputId = (e) => {
         setInputId(e.target.value);
@@ -15,10 +17,10 @@ function Login({ handleUserId, handleUserName, handleRegistClicked }) {
     const onSubmitAccount = () => {
         console.log(inputId);
         console.log(inputPw);
-        handleUserId(inputId);
-        handleUserName('user name state');
+        let after30m = new Date();
+        after30m.setMinutes(new Date().getMinutes() + 30);
+        setCookie("user", { id: inputId, name: "user name" }, { path: "/", expires: after30m });
     };
-
     return (
         <div className="login">
             <div className="login-input">

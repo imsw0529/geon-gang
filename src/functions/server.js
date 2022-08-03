@@ -1,5 +1,6 @@
 import axios from 'axios';
 import configData from '../config';
+import { useCookies } from 'react-cookie';
 
 const server = (function () {
     const address = configData.address;
@@ -7,7 +8,10 @@ const server = (function () {
 
     async function login(userid, password) {
         try {
-            const response = await axios.post(``)
+            const response = await axios.post(`${address}/login`, {
+                id: userid,
+                password: password
+            })
         } catch (e) {
             console.error(e);
         }

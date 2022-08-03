@@ -1,13 +1,22 @@
 import React from 'react';
 import people_icon from '../asset/people-icon.svg';
 import Login from './Login';
+import { useCookies } from 'react-cookie';
 
-function User({ changeUserId, onMyPageClicked, id }) {
-    const [userId, setUserId] = React.useState(id);
+function User({ onMyPageClicked, id }) {
     const [userName, setUserName] = React.useState('');
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    React.useEffect(() => {
+        console.log(cookies);
+        if (cookies.user) {
+            setUserName(cookies.user.name);
+        }
+    }, [cookies])
+
 
     const handleMyPageClicked = () => {
-        if (!userId) { return; }
+        if (!cookies.user) { return; }
         onMyPageClicked(0);
     };
 
@@ -15,21 +24,13 @@ function User({ changeUserId, onMyPageClicked, id }) {
         onMyPageClicked(6);
     }
 
-    function handleUserId(inputId) {
-        setUserId(inputId);
-        changeUserId(inputId);
-    }
-    function handleUserName(inputName) {
-        setUserName(inputName);
-    }
-
     return (
         <div className='user' onClick={handleMyPageClicked}>
             <div style={{ display: 'flex' }}>
-                {userId ? <p style={{ marginRight: '1rem' }}>{userName}</p> : null}
+                {cookies.user ? <p style={{ marginRight: '1rem' }}>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
-            {userId ? null : <Login handleUserId={handleUserId} handleUserName={handleUserName} handleRegistClicked={handleRegistClicked} />}
+            {cookies.user ? null : <Login handleRegistClicked={handleRegistClicked} />}
         </div>
     );
 };

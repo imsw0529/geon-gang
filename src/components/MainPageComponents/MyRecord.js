@@ -1,23 +1,25 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 import server from "../../functions/server";
 
-function MyRecord({ userId }) {
+function MyRecord() {
     const [selectedYear, setSelectedYear] = React.useState(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = React.useState(new Date().getMonth() + 1);
     const [recordList, setRecordList] = React.useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     const dayText = ['일', '월', '화', '수', '목', '금', '토'];
 
     async function initialList() {
-        const response = await server.myRecord(userId, selectedYear, selectedMonth);
+        const response = await server.myRecord(cookies.user.id, selectedYear, selectedMonth);
         setRecordList(response);
     }
 
     React.useEffect(() => {
-        if (!userId) { } else {
+        if (!cookies.user) { } else {
             initialList();
         }
-    }, [userId, selectedMonth])
+    }, [cookies, selectedMonth])
 
     function handlePrevClick() {
         let n = selectedMonth - 1;
@@ -55,7 +57,7 @@ function MyRecord({ userId }) {
     return (
         <div>
             <h3>나의 운동</h3>
-            {!userId ? <p>로그인 후 이용해 주세요</p> :
+            {!cookies.user ? <p>로그인 후 이용해 주세요</p> :
                 <div className="select-month">
                     <button onClick={handlePrevClick}>이전달</button>
                     <h4>{selectedYear}년 {selectedMonth}월</h4>

@@ -1,12 +1,14 @@
 import React from "react";
+import { useCookies } from "react-cookie";
 import server from "../../../functions/server";
 
-function UserPage({ userId, changeMode }) {
+function UserPage({ changeMode }) {
     const [userName, setName] = React.useState('');
     const [userGoalText, setGoalText] = React.useState('');
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     async function initialFunc() {
-        const userData = await server.userData(userId);
+        const userData = await server.userData(cookies.user.id);
         setName(userData.userName);
         setGoalText(userData.userGoalText);
     }
@@ -21,7 +23,7 @@ function UserPage({ userId, changeMode }) {
                 <tr>
                     <th>아이디</th>
                     <td>
-                        <p>{userId}</p>
+                        <p>{cookies.user.id}</p>
                     </td>
                 </tr>
                 <tr>
