@@ -8,7 +8,6 @@ function User({ onMyPageClicked, id }) {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     React.useEffect(() => {
-        console.log(cookies);
         if (cookies.user) {
             setUserName(cookies.user.name);
         }

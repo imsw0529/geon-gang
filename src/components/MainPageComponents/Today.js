@@ -5,6 +5,7 @@ import util from "../../functions/util";
 
 function Today() {
     const [inputDate, setInputDate] = React.useState(util.dateToString(new Date()));
+    const [memo, setMemo] = React.useState('');
     const [checkedGoal, setCheckedGoal] = React.useState([]);
     const [userGoalList, setUserGoalList] = React.useState([]);
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -50,7 +51,8 @@ function Today() {
             id: cookies.user.id,
             date: inputDate,
             goal: goal,
-            check: check
+            check: check,
+            memo: memo
         }
         await server.postToday(data);
     }
@@ -64,6 +66,10 @@ function Today() {
                     <form onSubmit={handleSubmit}>
                         <div className="table-row">
                             <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
+                        </div>
+                        <div className="table-row">
+                            <span>메모</span>
+                            <input type="text" name="memo" value={memo} onChange={(e) => { setMemo(e.target.value) }} />
                         </div>
                         {userGoalElements}
                         <div className="submit-row">

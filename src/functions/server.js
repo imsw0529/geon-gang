@@ -12,6 +12,7 @@ const server = (function () {
                 id: userid,
                 password: password
             })
+            return response.data;
         } catch (e) {
             console.error(e);
         }
@@ -77,7 +78,8 @@ const server = (function () {
                 id: data.id,
                 date: data.date,
                 goal: data.goal,
-                check: data.check
+                check: data.check,
+                memo: data.memo
             });
             window.alert(response.data);
         } catch (e) {

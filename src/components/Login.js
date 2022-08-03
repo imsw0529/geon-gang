@@ -1,5 +1,6 @@
 import React from "react";
 import { useCookies } from "react-cookie";
+import server from "../functions/server";
 
 function Login({ handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
@@ -14,13 +15,16 @@ function Login({ handleRegistClicked }) {
         setInputPw(e.target.value);
     };
 
-    const onSubmitAccount = () => {
+    const onSubmitAccount = async () => {
         console.log(inputId);
         console.log(inputPw);
+        const data = await server.login(inputId, inputPw);
+        console.log(data);
         let after30m = new Date();
         after30m.setMinutes(new Date().getMinutes() + 30);
-        setCookie("user", { id: inputId, name: "user name" }, { path: "/", expires: after30m });
+        setCookie("user", data, { path: "/", expires: after30m });
     };
+
     return (
         <div className="login">
             <div className="login-input">
