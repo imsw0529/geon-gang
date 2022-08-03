@@ -50,6 +50,7 @@ function MyRecord() {
                     <p>{record.goal}</p>
                     {record.memo ? <span>{record.memo}</span> : ''}
                 </div>
+                <span>{record.checked ? 'O' : 'X'}</span>
             </div>
         )
     })

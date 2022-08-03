@@ -16,10 +16,11 @@ function Login({ handleRegistClicked }) {
     };
 
     const onSubmitAccount = async () => {
-        console.log(inputId);
-        console.log(inputPw);
         const data = await server.login(inputId, inputPw);
-        console.log(data);
+        if (typeof data === 'string') {
+            window.alert(data);
+            return
+        }
         let after30m = new Date();
         after30m.setMinutes(new Date().getMinutes() + 30);
         setCookie("user", data, { path: "/", expires: after30m });
@@ -34,6 +35,7 @@ function Login({ handleRegistClicked }) {
                         placeholder="ID"
                         onChange={handleInputId} />
                     <input
+                        type="password"
                         name="password"
                         placeholder="Password"
                         onChange={handleInputPw} />
