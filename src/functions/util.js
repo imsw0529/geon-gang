@@ -14,6 +14,8 @@ const util = {
         return d.getDay();
     },
 
+    split: '/',
+
     confirmMessage: "입력하시겠습니까?"
 }
 

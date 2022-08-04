@@ -70,7 +70,7 @@ function UserGoal() {
         if (!result) { return }
         const data = {
             id: cookies.user.id,
-            goal: userGoalList.join('/')
+            goal: userGoalList.join(util.split)
         }
         await server.updateUserGoal(data);
     }

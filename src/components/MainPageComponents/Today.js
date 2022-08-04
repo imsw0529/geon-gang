@@ -46,7 +46,7 @@ function Today() {
     async function handleSubmit(e) {
         e.preventDefault();
         const check = (userGoalList.length === checkedGoal.length)
-        const goal = userGoalList.filter((gl, index) => checkedGoal.indexOf(index) !== -1).join('/');
+        const goal = userGoalList.filter((gl, index) => checkedGoal.indexOf(index) !== -1).join(util.split);
         const data = {
             id: cookies.user.id,
             date: inputDate,
