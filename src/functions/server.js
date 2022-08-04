@@ -1,6 +1,5 @@
 import axios from 'axios';
 import configData from '../config';
-import { useCookies } from 'react-cookie';
 
 const server = (function () {
     const address = configData.address;
