@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/geon-gang/static/css/main.17345901.css",
-    "main.js": "/geon-gang/static/js/main.c51a2266.js",
+    "main.js": "/geon-gang/static/js/main.a80724a2.js",
     "static/js/787.33d9a279.chunk.js": "/geon-gang/static/js/787.33d9a279.chunk.js",
     "static/media/people-icon.svg": "/geon-gang/static/media/people-icon.cb0162dc1d79d7baf7f21058acc89d94.svg",
     "index.html": "/geon-gang/index.html",
     "main.17345901.css.map": "/geon-gang/static/css/main.17345901.css.map",
-    "main.c51a2266.js.map": "/geon-gang/static/js/main.c51a2266.js.map",
+    "main.a80724a2.js.map": "/geon-gang/static/js/main.a80724a2.js.map",
     "787.33d9a279.chunk.js.map": "/geon-gang/static/js/787.33d9a279.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.17345901.css",
-    "static/js/main.c51a2266.js"
+    "static/js/main.a80724a2.js"
   ]
 }
