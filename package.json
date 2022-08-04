@@ -1,5 +1,5 @@
 {
-  "homepage": ".",
+  "homepage": "http://www.dnjsndnjs.com/",
   "name": "geon-gang",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
     "serve": "^14.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -43,5 +44,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://192.168.35.229:8080"
 }

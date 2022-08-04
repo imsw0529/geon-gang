@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import User from './components/User';
 import MenuBar from './components/MenuBar';
 import MainPage from './components/MainPage';
-import { useCookies } from 'react-cookie';
 
 function Title({ onMyPageClicked }) {
   return (
@@ -14,9 +14,8 @@ function Title({ onMyPageClicked }) {
   );
 };
 
-function App() {
+function Main() {
   const [selectedMenu, setSelectedMenu] = React.useState(1);
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   function handleSelect(n) {
     setSelectedMenu(n);
@@ -29,6 +28,16 @@ function App() {
       <MainPage selectedMenu={selectedMenu} />
     </div>
   );
+}
+
+function App() {
+  return (
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Routes>
+        <Route path='/' element={<Main />} />
+      </Routes>
+    </BrowserRouter>
+  )
 };
 
 export default App;
