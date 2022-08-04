@@ -7,6 +7,7 @@ function Today() {
     const [inputDate, setInputDate] = React.useState(util.dateToString(new Date()));
     const [memo, setMemo] = React.useState('');
     const [checkedGoal, setCheckedGoal] = React.useState([]);
+    const [checked, setChecked] = React.useState(false);
     const [userGoalList, setUserGoalList] = React.useState([]);
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
@@ -34,6 +35,15 @@ function Today() {
         setCheckedGoal(temp);
     }
 
+    function handCheked(e) {
+        if (e.target.checked) {
+            setChecked(true);
+        }
+        else {
+            setChecked(false);
+        }
+    }
+
     const userGoalElements = userGoalList.map((goal, index) => {
         return (
             <div key={index} className="table-row">
@@ -45,13 +55,12 @@ function Today() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const check = (userGoalList.length === checkedGoal.length)
         const goal = userGoalList.filter((gl, index) => checkedGoal.indexOf(index) !== -1).join(util.split);
         const data = {
             id: cookies.user.id,
             date: inputDate,
             goal: goal,
-            check: check,
+            check: checked,
             memo: memo
         }
         await server.postToday(data);
@@ -70,6 +79,10 @@ function Today() {
                         <div className="table-row">
                             <span>메모</span>
                             <input type="text" name="memo" value={memo} onChange={(e) => { setMemo(e.target.value) }} />
+                        </div>
+                        <div className="table-row">
+                            <span className="goal-check">goal!</span>
+                            <input type="checkbox" name="goal!" value='goal!' onClick={handCheked} />
                         </div>
                         {userGoalElements}
                         <div className="submit-row">

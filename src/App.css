@@ -145,6 +145,11 @@ header h1 {
   flex: 1;
 }
 
+.table-row .goal-check {
+  flex: 1;
+  font-weight: bold;
+}
+
 .submit-row {
   display: flex;
   padding: 10px 0;
