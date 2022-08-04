@@ -70,12 +70,16 @@ header h1 {
 
 .menu-bar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   background-color: bisque;
   align-content: stretch;
+
 }
 
 .menu-bar p {
+  flex: 0 0 auto;
   height: 100%;
   padding: 1rem;
   margin: 0;
