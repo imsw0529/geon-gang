@@ -26,7 +26,7 @@ function User({ onMyPageClicked, id }) {
     return (
         <div className='user' onClick={handleMyPageClicked}>
             <div className='user-icon'>
-                {cookies.user ? <p style={{ marginRight: '1rem' }}>{userName}</p> : null}
+                {cookies.user ? <p>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
             {cookies.user ? null : <Login handleRegistClicked={handleRegistClicked} />}

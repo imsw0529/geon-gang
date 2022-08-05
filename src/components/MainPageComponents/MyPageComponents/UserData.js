@@ -72,7 +72,7 @@ function UserData() {
                         </td>
                     </tr>
                     <tr>
-                        <th>목표</th>
+                        <th>각오 한마디</th>
                         <td>
                             <input
                                 type="text"

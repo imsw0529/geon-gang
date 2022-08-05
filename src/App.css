@@ -27,7 +27,11 @@ header h1 {
 }
 
 .user-icon {
-  display: 'flex'
+  display: flex;
+}
+
+.user-icon p {
+  margin: auto 1rem;
 }
 
 .people-icon {

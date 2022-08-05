@@ -88,7 +88,7 @@ function UserGoal() {
                         </td>
                         <td>
                             <button type="submit">
-                                수정
+                                저장
                             </button>
                         </td>
                     </tr>
