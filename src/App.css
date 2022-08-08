@@ -125,6 +125,10 @@ header h1 {
   padding: 0 1rem;
 }
 
+.table p {
+  margin: 0;
+}
+
 .table-row {
   display: flex;
   padding: 10px 0;
@@ -132,26 +136,29 @@ header h1 {
 }
 
 .table-row .table-user {
-  font-weight: bold;
+  font-weight: bolder;
   flex: 1;
 }
 
 .table-row .table-data {
   text-align: right;
-  flex: 3;
+  flex: 4;
 }
 
 .table-row .table-goal {
-  flex: 3;
+  flex: 4;
 }
 
-.table-row .table-goal p {
-  margin: 0;
+.table-row .table-goal table {
+  border-collapse: collapse;
 }
 
-.table-row .table-goal .goal-text {
-  margin-bottom: 0.1rem;
-  font-weight: 500;
+.table-row .table-goal th {
+  padding: 0;
+  padding-right: 1rem;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: top;
 }
 
 .table-row .goal-name {

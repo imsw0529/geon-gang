@@ -77,11 +77,11 @@ function Today() {
                             <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
                         </div>
                         <div className="table-row">
-                            <span>메모</span>
+                            <p>메모</p>
                             <input type="text" name="memo" value={memo} onChange={(e) => { setMemo(e.target.value) }} />
                         </div>
                         <div className="table-row">
-                            <span className="goal-check">goal!</span>
+                            <p className="goal-check">goal!</p>
                             <input type="checkbox" name="goal!" value='goal!' onClick={handCheked} />
                         </div>
                         {userGoalElements}

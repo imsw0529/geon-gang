@@ -18,8 +18,18 @@ function PeopleGoals() {
             <div key={user.id} className="table-row">
                 <span className="table-user">{user.name}</span>
                 <div className="table-goal">
-                    <p className="goal-text">{user.goalText}</p>
-                    <p>{user.goal}</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>각오 한마디</th>
+                                <td>{user.goalText}</td>
+                            </tr>
+                            <tr>
+                                <th>운동 목표</th>
+                                <td>{user.goal}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
