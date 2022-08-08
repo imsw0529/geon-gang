@@ -19,6 +19,33 @@ header h1 {
   text-align: left;
 }
 
+input[type="date"] {
+  margin: 0;
+  font-size: 1rem;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  resize: none;
+}
+
+button {
+  font-size: 1rem;
+}
+
 .user {
   margin: auto 1rem;
   height: 100%;
@@ -136,13 +163,14 @@ header h1 {
 }
 
 .table-row .table-user {
-  font-weight: bolder;
   flex: 1;
+  font-weight: bolder;
 }
 
 .table-row .table-data {
-  text-align: right;
   flex: 4;
+  text-align: right;
+  margin-right: 1rem;
 }
 
 .table-row .table-goal {

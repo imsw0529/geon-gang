@@ -6,6 +6,7 @@ function Login({ handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const passwordFocus = React.createRef();
 
     const handleInputId = (e) => {
         setInputId(e.target.value);
@@ -26,7 +27,13 @@ function Login({ handleRegistClicked }) {
         setCookie("user", data, { path: "/", expires: after30m });
     };
 
-    const handleKeyDown = (e) => {
+    const idKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            passwordFocus.current.focus();
+        }
+    }
+
+    const passwordKeyDown = (e) => {
         if (e.key === 'Enter') {
             onSubmitAccount();
         }
@@ -39,13 +46,15 @@ function Login({ handleRegistClicked }) {
                     <input
                         name="id"
                         placeholder="ID"
-                        onChange={handleInputId} />
+                        onChange={handleInputId}
+                        onKeyDown={idKeyDown} />
                     <input
+                        ref={passwordFocus}
                         type="password"
                         name="password"
                         placeholder="Password"
                         onChange={handleInputPw}
-                        onKeyDown={handleKeyDown} />
+                        onKeyDown={passwordKeyDown} />
                 </div>
                 <button onClick={onSubmitAccount}>로그인</button>
             </div>

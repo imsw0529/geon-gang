@@ -76,9 +76,9 @@ function Today() {
                         <div className="table-row">
                             <input type="date" name="inputDate" value={inputDate} onChange={(e) => { setInputDate(e.target.value) }} />
                         </div>
-                        <div className="table-row">
-                            <p>메모</p>
-                            <input type="text" name="memo" value={memo} onChange={(e) => { setMemo(e.target.value) }} />
+                        <div className="table-row" style={{ display: "block" }}>
+                            <p style={{ marginBottom: "0.2rem" }}>메모</p>
+                            <textarea name="memo" maxLength="255" wrap="soft" value={memo} onChange={(e) => { setMemo(e.target.value) }} />
                         </div>
                         <div className="table-row">
                             <p className="goal-check">goal!</p>
@@ -89,8 +89,8 @@ function Today() {
                             <button type="submit">입력</button>
                         </div>
                     </form>
-                </div>}
-        </div>
+                </div >}
+        </div >
     );
 }
 

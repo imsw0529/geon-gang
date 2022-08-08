@@ -30,8 +30,9 @@ function ThisMonth() {
 
         return (
             <div key={user.id} className="table-row">
-                <span className="table-user">{user.name}</span>
-                <span className="table-data">{heartBar + percent.toFixed(2) + '%'}</span>
+                <p className="table-user">{user.name}</p>
+                <p className="table-data">{heartBar}</p>
+                <p>{percent.toFixed(2) + '%'}</p>
             </div>
         )
     });
