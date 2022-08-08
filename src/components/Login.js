@@ -26,6 +26,12 @@ function Login({ handleRegistClicked }) {
         setCookie("user", data, { path: "/", expires: after30m });
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            onSubmitAccount();
+        }
+    }
+
     return (
         <div className="login">
             <div className="login-input">
@@ -38,7 +44,8 @@ function Login({ handleRegistClicked }) {
                         type="password"
                         name="password"
                         placeholder="Password"
-                        onChange={handleInputPw} />
+                        onChange={handleInputPw}
+                        onKeyDown={handleKeyDown} />
                 </div>
                 <button onClick={onSubmitAccount}>로그인</button>
             </div>
