@@ -56,7 +56,7 @@ function MyRecord() {
     })
 
     return (
-        <div>
+        <div className="main">
             <h3>나의 운동</h3>
             {!cookies.user ? <p>로그인 후 이용해 주세요</p> :
                 <div className="select-month">

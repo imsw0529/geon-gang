@@ -1,6 +1,9 @@
+import axios from "axios";
 import React from "react";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom"
 import server from "../functions/server";
+
 
 function Login({ handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
@@ -59,7 +62,9 @@ function Login({ handleRegistClicked }) {
                 <button onClick={onSubmitAccount}>로그인</button>
             </div>
             <div className="login-sub">
-                <p onClick={handleRegistClicked}>회원 가입</p>
+                <Link to="/regist" style={{ color: 'black', textDecoration: 'none' }}>
+                    <p onClick={handleRegistClicked}>회원 가입</p>
+                </Link>
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ function PeopleGoals() {
     });
 
     return (
-        <div>
+        <div className="main">
             <h3>각자의 목표</h3>
             <div className="table">
                 {goalElements}

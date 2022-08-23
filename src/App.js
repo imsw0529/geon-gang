@@ -4,6 +4,14 @@ import './App.css';
 import User from './components/User';
 import MenuBar from './components/MenuBar';
 import MainPage from './components/MainPage';
+import { CookiesProvider } from 'react-cookie';
+import ThisWeek from './components/MainPageComponents/ThisWeek';
+import ThisMonth from './components/MainPageComponents/ThisMonth';
+import PeopleGoals from './components/MainPageComponents/PeopleGoals';
+import Today from './components/MainPageComponents/Today';
+import MyRecord from './components/MainPageComponents/MyRecord';
+import MyPage from './components/MainPageComponents/MyPage';
+import UserRegist from './components/MainPageComponents/MyPageComponents/UserRegist';
 
 function Title({ onMyPageClicked }) {
   return (
@@ -22,21 +30,30 @@ function Main() {
   }
 
   return (
-    <div>
-      <Title onMyPageClicked={handleSelect} />
-      <MenuBar selectedMenu={selectedMenu} onSelect={handleSelect} />
-      <MainPage selectedMenu={selectedMenu} />
+    <div className='main'>
+
     </div>
   );
 }
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Routes>
-        <Route path='/' element={<Main />} />
-      </Routes>
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Title />
+        <MenuBar />
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/this_week' element={<ThisWeek />} />
+          <Route path='/this_month' element={<ThisMonth />} />
+          <Route path='/people_goal' element={<PeopleGoals />} />
+          <Route path='/today' element={<Today />} />
+          <Route path='/my_record' element={<MyRecord />} />
+          <Route path='/my_page' element={<MyPage />} />
+          <Route path='/regist' element={<UserRegist />} />
+        </Routes>
+      </BrowserRouter>
+    </CookiesProvider>
   )
 };
 

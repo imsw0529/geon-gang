@@ -67,7 +67,7 @@ function Today() {
     }
 
     return (
-        <div>
+        <div className="main">
             <h3>오늘의 운동</h3>
             {!cookies.user ?
                 <p>로그인 후 이용해 주세요</p> :
@@ -89,8 +89,8 @@ function Today() {
                             <button type="submit">입력</button>
                         </div>
                     </form>
-                </div >}
-        </div >
+                </div>}
+        </div>
     );
 }
 

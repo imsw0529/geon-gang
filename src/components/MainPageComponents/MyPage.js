@@ -3,8 +3,8 @@ import UserData from "./MyPageComponents/UserData";
 import UserGoal from "./MyPageComponents/UserGoal"
 import UserPage from "./MyPageComponents/UserPage";
 
-function MyPage({ mode: inputMode }) {
-    const [mode, setMode] = React.useState(inputMode);
+function MyPage() {
+    const [mode, setMode] = React.useState(0);
     let user = null;
     switch (mode) {
         case 0: // 조회
@@ -16,7 +16,7 @@ function MyPage({ mode: inputMode }) {
     }
 
     return (
-        <div>
+        <div className="main">
             <h3>My Page</h3>
             {user}
             <h3>목표 수정</h3>
