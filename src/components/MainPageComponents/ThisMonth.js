@@ -30,7 +30,7 @@ function ThisMonth() {
         heartBar += ' ';
 
         return (
-            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} >
+            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} key={user.id} >
                 <div key={user.id} className="table-row">
                     <p className="table-user">{user.name}</p>
                     <p className="table-data">{heartBar}</p>
