@@ -25,7 +25,7 @@ function UserRegist() {
     }
 
     return (
-        <div>
+        <div className="main">
             <h2>사용자 등록</h2>
             <form onSubmit={handleSubmit}>
                 <table>

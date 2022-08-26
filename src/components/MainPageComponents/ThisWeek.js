@@ -1,5 +1,6 @@
 import React from "react";
 import server from "../../functions/server";
+import { Link } from 'react-router-dom';
 
 function ThisWeek() {
     const dayNumber = 7;
@@ -28,16 +29,18 @@ function ThisWeek() {
         heartBar += ' ';
 
         return (
-            <div key={user.id} className="table-row">
-                <p className="table-user">{user.name}</p>
-                <p className="table-data">{heartBar}</p>
-                <p>{percent.toFixed(2) + '%'}</p>
-            </div>
+            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} >
+                <div key={user.id} className="table-row">
+                    <p className="table-user">{user.name}</p>
+                    <p className="table-data">{heartBar}</p>
+                    <p>{percent.toFixed(2) + '%'}</p>
+                </div>
+            </Link>
         )
     });
 
     return (
-        <div>
+        <div className="main">
             <h3>이번 주의 달성률</h3>
             <div className="table">
                 {thisWeekElements}

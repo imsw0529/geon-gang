@@ -3,11 +3,12 @@ import configData from '../config';
 
 const server = (function () {
     const address = configData.address;
+    axios.defaults.baseURL = address;
     // console.log(address);
 
     async function login(userid, password) {
         try {
-            const response = await axios.post(`${address}/login`, {
+            const response = await axios.post(`/login`, {
                 id: userid,
                 password: password
             })
@@ -19,7 +20,7 @@ const server = (function () {
 
     async function getUserData(userid) {
         try {
-            const response = await axios.get(`${address}/user/${userid}`);
+            const response = await axios.get(`/user/${userid}`);
             return response.data;
         } catch (e) {
             console.error(e);
@@ -28,7 +29,7 @@ const server = (function () {
 
     async function getUserGoal(userid) {
         try {
-            const response = await axios.get(`${address}/user_goal/${userid}`);
+            const response = await axios.get(`/user_goal/${userid}`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -37,7 +38,7 @@ const server = (function () {
 
     async function getThisWeek() {
         try {
-            const response = await axios.get(`${address}/this_week`);
+            const response = await axios.get(`/this_week`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -46,7 +47,7 @@ const server = (function () {
 
     async function getThisMonth() {
         try {
-            const response = await axios.get(`${address}/this_month`);
+            const response = await axios.get(`/this_month`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -55,7 +56,7 @@ const server = (function () {
 
     async function getPeopleGoal() {
         try {
-            const response = await axios.get(`${address}/people_goal`);
+            const response = await axios.get(`/people_goal`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -64,7 +65,7 @@ const server = (function () {
 
     async function getMyRecord(userid, year, month) {
         try {
-            const response = await axios.get(`${address}/my_record/${userid}/${year}/${month}`);
+            const response = await axios.get(`/my_record/${userid}/${year}/${month}`);
             return response.data.list;
         } catch (e) {
             console.error(e);
@@ -73,7 +74,7 @@ const server = (function () {
 
     async function postToday(data) {
         try {
-            const response = await axios.post(`${address}/today`, {
+            const response = await axios.post(`/today`, {
                 id: data.id,
                 date: data.date,
                 goal: data.goal,
@@ -88,7 +89,7 @@ const server = (function () {
 
     async function updateUserData(data) {
         try {
-            const response = await axios.post(`${address}/update_user`, {
+            const response = await axios.post(`/update_user`, {
                 id: data.id,
                 name: data.name,
                 password: data.password,
@@ -102,7 +103,7 @@ const server = (function () {
 
     async function updateUserGoal(data) {
         try {
-            const response = await axios.post(`${address}/update_goal`, {
+            const response = await axios.post(`/update_goal`, {
                 id: data.id,
                 goal: data.goal,
             });
@@ -114,7 +115,7 @@ const server = (function () {
 
     async function registUser(data) {
         try {
-            const response = await axios.post(`${address}/regist_user`, {
+            const response = await axios.post(`/regist_user`, {
                 id: data.id,
                 name: data.name,
                 password: data.password,
