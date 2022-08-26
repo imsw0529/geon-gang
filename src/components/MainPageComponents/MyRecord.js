@@ -19,8 +19,11 @@ function MyRecord() {
     }
 
     React.useEffect(() => {
-        params.userid && initialList(params.userid);
-        cookies.user && initialList(cookies.user.id);
+        if (params.userid) {
+            initialList(params.userid);
+        } else if (cookies.user) {
+            initialList(cookies.user.id);
+        }
     }, [cookies, selectedMonth])
 
     function handlePrevClick() {
