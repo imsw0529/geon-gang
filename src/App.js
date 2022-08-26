@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import User from './components/User';
 import MenuBar from './components/MenuBar';
 import MainPage from './components/MainPage';
-import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider, useCookies } from 'react-cookie';
 import ThisWeek from './components/MainPageComponents/ThisWeek';
 import ThisMonth from './components/MainPageComponents/ThisMonth';
 import PeopleGoals from './components/MainPageComponents/PeopleGoals';
@@ -23,11 +23,12 @@ function Title({ onMyPageClicked }) {
 };
 
 function Main() {
-  const [selectedMenu, setSelectedMenu] = React.useState(1);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [userId, setUserId] = React.useState();
 
-  function handleSelect(n) {
-    setSelectedMenu(n);
-  }
+  React.useEffect(() => {
+    cookies.user && setUserId(cookies.user);
+  }, [cookies])
 
   return (
     <div className='main'>
@@ -43,12 +44,13 @@ function App() {
         <Title />
         <MenuBar />
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Navigate to="/this_week" />} />
           <Route path='/this_week' element={<ThisWeek />} />
           <Route path='/this_month' element={<ThisMonth />} />
           <Route path='/people_goal' element={<PeopleGoals />} />
           <Route path='/today' element={<Today />} />
-          <Route path='/my_record' element={<MyRecord />} />
+          <Route path='/record' element={<MyRecord />} />
+          <Route path='/record/:userid' element={<MyRecord />} />
           <Route path='/my_page' element={<MyPage />} />
           <Route path='/regist' element={<UserRegist />} />
         </Routes>

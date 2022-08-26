@@ -1,6 +1,7 @@
 import React from "react";
 import server from "../../functions/server";
 import util from "../../functions/util";
+import { Link } from 'react-router-dom';
 
 function ThisMonth() {
     const dayNumber = util.monthDayNum();
@@ -29,11 +30,13 @@ function ThisMonth() {
         heartBar += ' ';
 
         return (
-            <div key={user.id} className="table-row">
-                <p className="table-user">{user.name}</p>
-                <p className="table-data">{heartBar}</p>
-                <p>{percent.toFixed(2) + '%'}</p>
-            </div>
+            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} >
+                <div key={user.id} className="table-row">
+                    <p className="table-user">{user.name}</p>
+                    <p className="table-data">{heartBar}</p>
+                    <p>{percent.toFixed(2) + '%'}</p>
+                </div>
+            </Link>
         )
     });
 
