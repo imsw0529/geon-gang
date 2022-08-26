@@ -29,8 +29,8 @@ function ThisWeek() {
         heartBar += ' ';
 
         return (
-            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} >
-                <div key={user.id} className="table-row">
+            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} key={user.id} >
+                <div className="table-row">
                     <p className="table-user">{user.name}</p>
                     <p className="table-data">{heartBar}</p>
                     <p>{percent.toFixed(2) + '%'}</p>

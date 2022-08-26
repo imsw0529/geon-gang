@@ -16,8 +16,8 @@ function PeopleGoals() {
 
     const goalElements = goalList.map((user) => {
         return (
-            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} >
-                <div key={user.id} className="table-row">
+            <Link to={"/record/" + user.id} style={{ color: "black", textDecoration: "none" }} key={user.id} >
+                <div className="table-row">
                     <span className="table-user">{user.name}</span>
                     <div className="table-goal">
                         <table>
