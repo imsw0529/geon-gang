@@ -1,15 +1,17 @@
 import React from "react";
-import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import server from "../../../functions/server";
 
 function UserPage({ changeMode }) {
-    const [userName, setName] = React.useState('');
     const [userGoalText, setGoalText] = React.useState('');
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    const userId = sessionStorage.getItem('id');
+    const userName = sessionStorage.getItem('name');
+
+    const navigate = useNavigate();
 
     async function initialFunc() {
-        const userData = await server.userData(cookies.user.id);
-        setName(userData.userName);
+        const userData = await server.userData(userId);
         setGoalText(userData.userGoalText);
     }
 
@@ -17,13 +19,18 @@ function UserPage({ changeMode }) {
         initialFunc();
     }, [])
 
+    const logout = () => {
+        sessionStorage.clear();
+        navigate(`/`);
+    }
+
     return (
         <table>
             <tbody>
                 <tr>
                     <th>아이디</th>
                     <td>
-                        <p>{cookies.user.id}</p>
+                        <p>{userId}</p>
                     </td>
                 </tr>
                 <tr>
@@ -41,6 +48,7 @@ function UserPage({ changeMode }) {
                 <tr>
                     <th />
                     <td><button style={{ float: 'right' }} onClick={changeMode} >정보 수정하기</button></td>
+                    <td><button style={{ float: 'right' }} onClick={logout} >로그아웃</button></td>
                 </tr>
             </tbody>
         </table>

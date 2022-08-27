@@ -1,5 +1,4 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import server from "../../../functions/server";
 import util from "../../../functions/util";
 
@@ -7,11 +6,12 @@ function UserData() {
     const [userName, setName] = React.useState('');
     const [userPw, setPw] = React.useState('');
     const [userGoalText, setGoalText] = React.useState('');
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    const userId = sessionStorage.getItem('id');
 
     async function initialFunc() {
-        if (cookies.user.id === null) { return }
-        const userData = await server.userData(cookies.user.id);
+        if (userId === null) { return }
+        const userData = await server.userData(userId);
         setName(userData.userName);
         setGoalText(userData.userGoalText);
     }
@@ -25,7 +25,7 @@ function UserData() {
         const result = window.confirm(util.confirmMessage);
         if (!result) { return }
         const data = {
-            id: cookies.user.id,
+            id: userId,
             name: userName,
             password: userPw,
             goalText: userGoalText
@@ -44,7 +44,7 @@ function UserData() {
                             <input
                                 type="text"
                                 name="userId"
-                                value={cookies.user.id}
+                                value={userId}
                                 readOnly
                             />
                         </td>

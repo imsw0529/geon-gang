@@ -8,24 +8,25 @@ function User() {
     const [userName, setUserName] = React.useState('');
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const navigate = useNavigate();
+    const name = sessionStorage.getItem('name');
 
     React.useEffect(() => {
-        if (cookies.user) {
-            setUserName(cookies.user.name);
+        if (name) {
+            setUserName(name);
         }
-    }, [cookies])
+    }, [])
 
     function handleClick() {
-        cookies.user && navigate(`/my_page`);
+        name && navigate(`/my_page`);
     }
 
     return (
         <div className='user' onClick={handleClick}>
             <div className='user-icon'>
-                {cookies.user ? <p>{userName}</p> : null}
+                {name ? <p>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
-            {cookies.user ? null : <Login />}
+            {name ? null : <Login />}
         </div>
     );
 };

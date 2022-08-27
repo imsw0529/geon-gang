@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom"
@@ -27,7 +26,11 @@ function Login({ handleRegistClicked }) {
         }
         let after30m = new Date();
         after30m.setMinutes(new Date().getMinutes() + 30);
-        setCookie("user", data, { path: "/", expires: after30m });
+        // setCookie("user", data, { path: "/", expires: after30m });
+        sessionStorage.setItem('id', data.id);
+        sessionStorage.setItem('name', data.name);
+        sessionStorage.setItem('token', data.token);
+        window.location.reload();
     };
 
     const idKeyDown = (e) => {

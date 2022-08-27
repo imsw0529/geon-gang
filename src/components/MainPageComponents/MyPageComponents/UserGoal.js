@@ -1,14 +1,14 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import server from "../../../functions/server";
 import util from "../../../functions/util";
 
 function UserGoal() {
     const [userGoalList, setUserGoalList] = React.useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    const userId = sessionStorage.getItem('id');
 
     async function initialList() {
-        const response = await server.userGoal(cookies.user.id);
+        const response = await server.userGoal(userId);
         setUserGoalList(response);
     }
 
@@ -69,7 +69,7 @@ function UserGoal() {
         const result = window.confirm(util.confirmMessage);
         if (!result) { return }
         const data = {
-            id: cookies.user.id,
+            id: userId,
             goal: userGoalList.join(util.split)
         }
         await server.updateUserGoal(data);

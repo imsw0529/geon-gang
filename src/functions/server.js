@@ -4,7 +4,11 @@ import configData from '../config';
 const server = (function () {
     const address = configData.address;
     axios.defaults.baseURL = address;
+    // axios.defaults.withCredentials = true;
     // console.log(address);
+    const token = sessionStorage.getItem('token');
+    token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`);
+
 
     async function login(userid, password) {
         try {

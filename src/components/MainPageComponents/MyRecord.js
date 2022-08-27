@@ -1,5 +1,4 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import { useParams } from "react-router-dom";
 import server from "../../functions/server";
 
@@ -7,11 +6,11 @@ function MyRecord() {
     const [selectedYear, setSelectedYear] = React.useState(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = React.useState(new Date().getMonth() + 1);
     const [recordList, setRecordList] = React.useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     const dayText = ['일', '월', '화', '수', '목', '금', '토'];
 
     const params = useParams();
+    const userId = sessionStorage.getItem('id');
 
     async function initialList(search_id) {
         const response = await server.myRecord(search_id, selectedYear, selectedMonth);
@@ -21,10 +20,10 @@ function MyRecord() {
     React.useEffect(() => {
         if (params.userid) {
             initialList(params.userid);
-        } else if (cookies.user) {
-            initialList(cookies.user.id);
+        } else if (userId) {
+            initialList(userId);
         }
-    }, [cookies, selectedMonth])
+    }, [selectedMonth])
 
     function handlePrevClick() {
         let n = selectedMonth - 1;
@@ -63,7 +62,7 @@ function MyRecord() {
     return (
         <div className="main">
             {params.userid ? <h3>{params.userid}</h3> : <h3>나의 운동</h3>}
-            {(!cookies.user && !params.userid) ? <p>로그인 후 이용해 주세요</p> :
+            {(!userId && !params.userid) ? <p>로그인 후 이용해 주세요</p> :
                 <div className="select-month">
                     <button onClick={handlePrevClick}>이전달</button>
                     <h4>{selectedYear}년 {selectedMonth}월</h4>

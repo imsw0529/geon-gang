@@ -11,18 +11,20 @@ function Today() {
     const [userGoalList, setUserGoalList] = React.useState([]);
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
+    const userId = sessionStorage.getItem('id');
+
     async function initialList() {
-        const response = await server.userGoal(cookies.user.id);
+        const response = await server.userGoal(userId);
         setUserGoalList(response);
     }
 
     React.useEffect(() => {
-        if (!cookies.user) {
+        if (!userId) {
 
         } else {
             initialList();
         }
-    }, [cookies]);
+    }, []);
 
     function handleChange(e, index) {
         let temp = checkedGoal;
@@ -57,7 +59,7 @@ function Today() {
         e.preventDefault();
         const goal = userGoalList.filter((gl, index) => checkedGoal.indexOf(index) !== -1).join(util.split);
         const data = {
-            id: cookies.user.id,
+            id: userId,
             date: inputDate,
             goal: goal,
             check: checked,
@@ -69,7 +71,7 @@ function Today() {
     return (
         <div className="main">
             <h3>오늘의 운동</h3>
-            {!cookies.user ?
+            {!userId ?
                 <p>로그인 후 이용해 주세요</p> :
                 <div className="table">
                     <form onSubmit={handleSubmit}>
