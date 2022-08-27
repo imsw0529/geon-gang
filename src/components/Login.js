@@ -1,5 +1,4 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom"
 import server from "../functions/server";
 
@@ -7,7 +6,6 @@ import server from "../functions/server";
 function Login({ handleRegistClicked }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const passwordFocus = React.createRef();
 
     const handleInputId = (e) => {
@@ -24,9 +22,6 @@ function Login({ handleRegistClicked }) {
             window.alert(data);
             return
         }
-        let after30m = new Date();
-        after30m.setMinutes(new Date().getMinutes() + 30);
-        // setCookie("user", data, { path: "/", expires: after30m });
         sessionStorage.setItem('id', data.id);
         sessionStorage.setItem('name', data.name);
         sessionStorage.setItem('token', data.token);

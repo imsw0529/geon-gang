@@ -1,5 +1,4 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import server from "../../functions/server";
 import util from "../../functions/util";
 
@@ -9,7 +8,6 @@ function Today() {
     const [checkedGoal, setCheckedGoal] = React.useState([]);
     const [checked, setChecked] = React.useState(false);
     const [userGoalList, setUserGoalList] = React.useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     const userId = sessionStorage.getItem('id');
 

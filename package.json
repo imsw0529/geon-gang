@@ -1,7 +1,7 @@
 {
-  "homepage": "http://www.dnjsndnjs.com/",
+  "homepage": "http://www.geon-gang.dnjsndnjs.com/",
   "name": "geon-gang",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
