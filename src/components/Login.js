@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import server from "../functions/server";
 
 
-function Login({ handleRegistClicked }) {
+function Login({ forceupdate }) {
     const [inputId, setInputId] = React.useState('');
     const [inputPw, setInputPw] = React.useState('');
     const passwordFocus = React.createRef();
@@ -25,7 +25,7 @@ function Login({ handleRegistClicked }) {
         sessionStorage.setItem('id', data.id);
         sessionStorage.setItem('name', data.name);
         sessionStorage.setItem('token', data.token);
-        window.location.reload();
+        forceupdate();
     };
 
     const idKeyDown = (e) => {
@@ -61,7 +61,7 @@ function Login({ handleRegistClicked }) {
             </div>
             <div className="login-sub">
                 <Link to="/regist" style={{ color: 'black', textDecoration: 'none' }}>
-                    <p onClick={handleRegistClicked}>회원 가입</p>
+                    <p>회원 가입</p>
                 </Link>
             </div>
         </div>

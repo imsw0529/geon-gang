@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import people_icon from '../asset/people-icon.svg';
 import Login from './Login';
-import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom'
 
 function User() {
-    const [userName, setUserName] = React.useState('');
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-    const navigate = useNavigate();
     const name = sessionStorage.getItem('name');
 
-    React.useEffect(() => {
-        if (name) {
-            setUserName(name);
-        }
-    }, [])
+    const [userName, setUserName] = React.useState(name);
+    const [, updateState] = useState();
+    const forceupdate = useCallback(() => updateState({}), []);
+
+    const navigate = useNavigate();
 
     function handleClick() {
         name && navigate(`/my_page`);
@@ -26,7 +22,7 @@ function User() {
                 {name ? <p>{userName}</p> : null}
                 <img src={people_icon} className='people-icon' />
             </div>
-            {name ? null : <Login />}
+            {name ? null : <Login forceupdate={forceupdate} />}
         </div>
     );
 };
