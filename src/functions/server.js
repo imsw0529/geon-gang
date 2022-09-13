@@ -6,8 +6,6 @@ const server = (function () {
     axios.defaults.baseURL = address;
     // axios.defaults.withCredentials = true;
     // console.log(address);
-    const token = sessionStorage.getItem('token');
-    token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`);
 
 
     async function login(userid, password) {
@@ -77,6 +75,8 @@ const server = (function () {
     }
 
     async function postToday(data) {
+        const token = sessionStorage.getItem('token');
+        token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`);
         try {
             const response = await axios.post(`/today`, {
                 id: data.id,
@@ -92,6 +92,8 @@ const server = (function () {
     }
 
     async function updateUserData(data) {
+        const token = sessionStorage.getItem('token');
+        token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`);
         try {
             const response = await axios.post(`/update_user`, {
                 id: data.id,
@@ -106,6 +108,8 @@ const server = (function () {
     }
 
     async function updateUserGoal(data) {
+        const token = sessionStorage.getItem('token');
+        token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`);
         try {
             const response = await axios.post(`/update_goal`, {
                 id: data.id,
